@@ -29,7 +29,16 @@ module FeedParser
     def parse(str)
       # Dirty hack: some feeds contain the & char. It must be changed to &amp;
       str.gsub!(/&(\s+)/, '&amp;\1')
-      doc = REXML::Document.new(str)
+      back_str = str
+      
+      begin
+        str.force_encoding("utf-8")
+        doc = REXML::Document.new(str)
+      rescue REXML::ParseException
+        str = back_str
+        doc = REXML::Document.new(str)
+      end
+      
       @xml = doc.root
       # get feed info
       @encoding = doc.encoding
