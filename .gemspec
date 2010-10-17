@@ -7,8 +7,8 @@ require 'bundler/version'
 spec = Gem::Specification.new do |s|
 	s.platform = Gem::Platform::RUBY
 	s.summary = "Ruby library to parse ATOM and RSS feeds"
-	s.name = PKG_NAME
-	s.version = PKG_VERSION
+	s.name = "feedparser"
+	s.version = "7.0"
 	s.requirements << 'none'
 	s.require_path = 'lib'
 	s.autorequire = 'feedparser'
